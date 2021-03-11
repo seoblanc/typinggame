@@ -1,17 +1,15 @@
-import Home from '../containers/Home';
-import Result from '../containers/Result';
-import Interface from '../core/Interface';
-import createHashRouter from '../router';
+// import Interface from '../core/Interface';
+// import createHashRouter from '../router';
+// import { Store } from '../store';
 
-class App extends Interface {
-  constructor(initialState, root) {
-    super(initialState, root);
-    // 진행상태, 남은 횟수, 남은 시간, 점수, 단어
-    // 점수, 평균 해결 시간,
-  }
-  init() {
-  }
+// class App extends Interface {
+//   init() {
+//     console.log(this.state);
+//     this.store = new Store(this.state);
+//     // init spa router
+//     createHashRouter(this.root);
+//   }
 
-};
+// };
 
-export default App;
+// export default App;

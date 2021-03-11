@@ -1,25 +1,37 @@
-class Button {
-    constructor(props) {
-        const { title } = props;
-        this._title = title;
+import { create } from '../utils/render';
+
+class Button extends Comment {
+    constructor() {
+        super();
+        this._label = Button.defaultProps.label;
     }
 
-    click() {
+    click(e) {
+        console.log(e)
+    }
 
+    template() {
+        const btn = create('button', {
+            children: this.label,
+            event: { 'click': this.click }
+        })
+        console.log(btn);
+        return btn;
     }
 
     render() {
-
     }
 
-    get title() {
-        return this._title;
+    get label() {
+        return this._label;
     }
-    set title(title) {
-        this._title = title;
+    set label(label) {
+        this._label = label;
     }
 }
 
 Button.defaultProps = {
-    TITLE: '시작'
+    label: '시작'
 }
+
+export default Button;
