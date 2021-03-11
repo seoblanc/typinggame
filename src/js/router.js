@@ -1,32 +1,34 @@
-import Home from './pages/Home';
-import Result from './pages/Result';
+import Home from "./containers/Home";
+import Result from "./containers/Result";
 
-// router정의
+/**
+ * @param {*} root
+ * 메인화면/결과화면을 hash를 통해 routing 구현
+ */
 const createHashRouter = root => {
-    const HomePage = new Home(root);
-    const ResultPage = new Result(root);
+    window.oHome = new Home(root);
+    window.oResult = new Result(root);
     const routes = {
-        '': HomePage,
-        'result': ResultPage
+        '': window.oHome,
+        'result': window.oResult
     };
 
-    function initRouter() {
+    const initRouter = () => {
         render();
         window.addEventListener('hashchange', () => render(getHash()));
     }
 
-    function getHash() {
+    const getHash = () => {
         const hash = location.hash.replace('#', '');
         if (!routes[hash]) {
-            root.innerHTML = `sorry, ${hash} not found`;
-            return;
+            alert('존재하지 않는 페이지 입니다. 첫 화면으로 이동합니다.');
+            return '';
         }
         return hash;
     }
 
-    function render(route = '') {
-        root.innerHTML = '';
-        root.appendChild(routes[route].render());
+    const render = (route = '') => {
+        routes[route].render();
     }
 
     initRouter();

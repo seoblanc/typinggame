@@ -11,30 +11,23 @@ module.exports = {
   mode,
   entry: {
     // router: resolve(__dirname, './router.js'),
-    app: resolve(paths.JS_SRC, './index.js')
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: join(__dirname, './src'),
-    hot: true,
-    publicPath: '/',
-    open: true,
-    // openPage: 'flight',
-    inline: true,
-    port: 3000
+    app: resolve(paths.JS_SRC, 'index.js')
   },
   output: {
     path: paths.OUTPUT,
     filename: '[name].js',
     clean: true
   },
+  resolve: {
+    extensions: [ '.js' ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
         filename: 'index.html',
-        template: join(paths.ROOT, './src/index.html')
+        template: join(paths.ROOT, 'index.html')
     }),
     new MiniCssExtractPlugin({
-      filename: resolve(paths.CSS_SRC, './index.js')
+      filename: resolve(paths.CSS_SRC, 'style.css')
     }),
   ],
   module: {

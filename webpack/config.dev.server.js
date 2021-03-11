@@ -1,16 +1,13 @@
-const { HotModuleReplacementPlugin } = require('webpack');
 const { join } = require('path');
-const paths = require('./paths');
+const { HotModuleReplacementPlugin } = require('webpack');
 
 module.exports = {
     mode: 'development',
     plugins: [
-        // new HtmlWebpackPlugin({
-        //     template: join(paths.ROOT, './src/index.html')
-        // }),
         new HotModuleReplacementPlugin(),
     ],
     devServer: {
+        contentBase: join(__dirname, './src'),
         publicPath: '/',
         open: true,
         // openPage: 'home',

@@ -9,7 +9,7 @@ class Button {
     }
 
     render() {
-        
+
     }
 
     get title() {
