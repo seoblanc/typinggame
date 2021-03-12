@@ -5,7 +5,7 @@ import Store from './store';
 
 const root = document.getElementById('root');
 const initialState = {
-  status: 'init',
+  status: 'initial',
   words: [],
   current: {
     time: 0,

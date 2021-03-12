@@ -10,19 +10,20 @@ class Container {
     if (props.element) {
       this.element = props.element;
     }
+    this.components = {};
     this.init();
   }
   // 초기 실행 함수
   init() {
   }
-  template() {
-    return '';
-  }
-  // 엘리먼트 렌더링 함수
+  // 구현부
   render() {
-    if (!this.element) return;
-    console.log(this.template());
-    this.element.append(this.template());
+    // if (this.parent) {
+    //   this.parent.appendChild(this.element);
+    // } else {
+    //   const fragment = document.createDocumentFragment();
+    //   fragment.appendChild(this.element);
+    // }
     this.onMount();
   }
   // 렌더 후 실행 함수
@@ -30,7 +31,7 @@ class Container {
     // this.setEvent();
   }
   onUpdate() {
-    this.render();
+    // this.render();
   }
   onUnmout() {
   }

@@ -1,37 +1,29 @@
-import { create } from '../utils/render';
+import Component from '../core/Component';
+class Button extends Component {
+  constructor() {
+    super();
+    this._label = Button.defaultProps.label.initial;
+  }
 
-class Button extends Comment {
-    constructor() {
-        super();
-        this._label = Button.defaultProps.label;
-    }
+  render(status) {
+    `<button class="btn-submit">${Button.defaultProps.label[status]}</button>`
+  }
 
-    click(e) {
-        console.log(e)
-    }
-
-    template() {
-        const btn = create('button', {
-            children: this.label,
-            event: { 'click': this.click }
-        })
-        console.log(btn);
-        return btn;
-    }
-
-    render() {
-    }
-
-    get label() {
-        return this._label;
-    }
-    set label(label) {
-        this._label = label;
-    }
+  get label() {
+    return this._label;
+  }
+  set label(label) {
+    this._label = label;
+  }
 }
 
 Button.defaultProps = {
-    label: '시작'
+  label: {
+    initial: '시작',
+    failure: '시작',
+    playing: '초기화',
+    complete: '다시 시작'
+  }
 }
 
 export default Button;

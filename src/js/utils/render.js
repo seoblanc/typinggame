@@ -1,7 +1,9 @@
-export const append = (parent, child, positon = 'afterend') => {
-  if (!isElement(parent)) return;
-  if (!isElement(child)) return;
-  parent.insertAdjacentElement(positon, child);
+
+
+export const append = (parent = null, element, positon = 'afterend') => {
+  parent
+  ? parent.insertAdjacentElement(positon, element)
+  : document.createDocumentFragment().append(element);
 };
 
 export const create = (name, attr) => {

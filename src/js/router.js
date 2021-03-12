@@ -4,7 +4,7 @@
  */
 const Router = containers => {
     const initRouter = () => {
-        render(getHash());
+        // render(getHash());
         window.addEventListener('hashchange', () => render(getHash()));
     }
 

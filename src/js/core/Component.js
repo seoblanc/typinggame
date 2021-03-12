@@ -1,31 +1,31 @@
-import Store from '../store';
-
 class Component {
   // 생성자
   constructor(props = {}) {
-    if (props.state) {
-      this._state = props.state;
-    }
     if (props.element) {
       this.element = props.element;
+    } else {
+      this.element = document.createDocumentFragment();
     }
+
     this.init();
   }
   // 초기 실행 함수
   init() {
+
   }
   template() {
     return '';
   }
   // 엘리먼트 렌더링 함수
-  render() {
-    if (!this.element) return;
-    this.element.append(this.template());
+  render(){
+    this.element.innerHTML = this.template();
     this.onMount();
   }
   // 렌더 후 실행 함수
   onMount() {
-    // this.setEvent();
+    this.bindEvent();
+  }
+  bindEvent() {
   }
   onUpdate() {
     this.render();

@@ -1,3 +1,4 @@
+import { words } from './reducer';
 class Store {
   constructor(initialState = {}) {
     this._state = initialState;
