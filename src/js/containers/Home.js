@@ -1,7 +1,7 @@
 import url from '../constants/api';
 import axios from 'axios';
-import Container from '../core/Container';
-import Button from '../components/Button';
+import Interface from '../core/Interface';
+import Input from '../components/Input';
 
 class Home extends Container {
   init() {
@@ -10,40 +10,33 @@ class Home extends Container {
 
   async getWords () {
     const { data } = await axios.get(url);
-    this.store.state = { words: data, status: 'ready' };
+    console.log(data);
     this.render();
   }
 
   template() {
-    const { current, score } = this.store.state;
-    const { time, word } = current;
-    const btn = new Button();
+    // const input = new Input();
+    const state = this.state;
+    console.log(this, state);
     return `
     <div>
-      <span>남은 시간 : ${time}초</span>
-      &nbsp;
-      <span>점수 : ${score}점</span>
-      <h1>${word ? word : '문제 단어'}</h1>
-      ${btn.template()}
-    </div>`
+      <div>
+        <span>남은 시간 : ${this.state.current.time}초</span>
+        <span>점수 : ${this.state.score}점</span>
+      </div>
+      <h1>${this.state.current.word || '문제 단어'}</h1>
+      </div>`
+      // ${input.template()}
   }
 
-  // render() {
-  //   console.log('render');
-  //   const container = document.createElement('div');
-  //   const title = document.createElement('h1');
-  //   title.innerHTML = '타자게임!';
-  //   const btn1 = document.createElement('button');
-  //   const btn2 = document.createElement('button');
-  //   btn1.innerHTML = 'home';
-  //   btn1.addEventListener('click', () => location.hash = '');
-  //   btn2.innerHTML = 'result';
-  //   btn2.addEventListener('click', () => location.hash = 'result');
-  //   container.appendChild(title);
-  //   container.appendChild(btn1);
-  //   container.appendChild(btn2);
-  //   return container;
-  // }
+  onInputChange(e) {
+    console.log('input', e);
+  }
+
+  setEvent() {
+    this.element.querySelector('.input-field').addEventListener('change', this.onInputChange);
+  }
+
 }
 
 export default Home;
