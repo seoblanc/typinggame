@@ -1,14 +1,10 @@
 /**
+ * @param {*} root
  * 메인화면/결과화면을 hash를 통해 routing 구현
  */
-const createHashRouter = () => {
-    const routes = {
-        '': window.oHome,
-        'result': window.oResult
-    };
-
+const Router = containers => {
     const initRouter = () => {
-        window.oHome.render();
+        render(getHash());
         window.addEventListener('hashchange', () => render(getHash()));
     }
 
@@ -22,7 +18,7 @@ const createHashRouter = () => {
     }
 
     const render = (route = '') => {
-        routes[route].update();
+        containers[route].render();
     }
 
     initRouter();
